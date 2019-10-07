@@ -63,16 +63,16 @@ def get_calib_param():
 			digH[i] = (-digH[i] ^ 0xFFFF) + 1  
 
 def readData():
-	data = []
-	for i in range (0xF7, 0xF7+8):
-		data.append(bus.read_byte_data(i2c_address,i))
-	pres_raw = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
-	temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)
-	hum_raw  = (data[6] << 8)  |  data[7]
+    data = []
+    for i in range (0xF7, 0xF7+8):
+    	data.append(bus.read_byte_data(i2c_address,i))
+    pres_raw = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
+    temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)
+    hum_raw  = (data[6] << 8)  |  data[7]
 	
-	compensate_T(temp_raw)
-	compensate_P(pres_raw)
-	compensate_H(hum_raw)
+    compensate_T(temp_raw)
+    compensate_P(pres_raw)
+    compensate_H(hum_raw)
     print(date.strftime("%Y/%m/%d,%H:%M"), ",%-6.2f,%7.2f,%6.2f" % (temp, press, hum))
     print("temperature : %-6.2f ℃" % (temp))
     print("pressure : %7.2f hPa" % (press))
