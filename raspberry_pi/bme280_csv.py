@@ -74,7 +74,7 @@ def readData():
     compensate_P(pres_raw)
     compensate_H(hum_raw)
     print(date.strftime("%Y/%m/%d,%H:%M"), ",%-6.2f,%7.2f,%6.2f" % (temp, press, hum))
-    print("temperature : %-6.2f ℃" % (temp))
+    print("temperature : %-6.2f â„ƒ" % (temp))
     print("pressure : %7.2f hPa" % (press))
     print("humidity : %6.2f %" % (hum))
 
