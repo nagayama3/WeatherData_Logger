@@ -103,26 +103,26 @@ def compensate_P(adc_P):
     press = pressure / 100
 
 def compensate_T(adc_T):
-	global t_fine
-	v1 = (adc_T / 16384.0 - digT[0] / 1024.0) * digT[1]
-	v2 = (adc_T / 131072.0 - digT[0] / 8192.0) * (adc_T / 131072.0 - digT[0] / 8192.0) * digT[2]
-	t_fine = v1 + v2
-	temperature = t_fine / 5120.0
+    global t_fine
+    v1 = (adc_T / 16384.0 - digT[0] / 1024.0) * digT[1]
+    v2 = (adc_T / 131072.0 - digT[0] / 8192.0) * (adc_T / 131072.0 - digT[0] / 8192.0) * digT[2]
+    t_fine = v1 + v2
+    temperature = t_fine / 5120.0
     global temp
     temp = temperature
 
 def compensate_H(adc_H):
-	global t_fine
-	var_h = t_fine - 76800.0
-	if var_h != 0:
-		var_h = (adc_H - (digH[3] * 64.0 + digH[4]/16384.0 * var_h)) * (digH[1] / 65536.0 * (1.0 + digH[5] / 67108864.0 * var_h * (1.0 + digH[2] / 67108864.0 * var_h)))
-	else:
-		return 0
-	var_h = var_h * (1.0 - digH[0] * var_h / 524288.0)
-	if var_h > 100.0:
-		var_h = 100.0
-	elif var_h < 0.0:
-		var_h = 0.0
+    global t_fine
+    var_h = t_fine - 76800.0
+    if var_h != 0:
+    	var_h = (adc_H - (digH[3] * 64.0 + digH[4]/16384.0 * var_h)) * (digH[1] / 65536.0 * (1.0 + digH[5] / 67108864.0 * var_h * (1.0 + digH[2] / 67108864.0 * var_h)))
+    else:
+    	return 0
+    var_h = var_h * (1.0 - digH[0] * var_h / 524288.0)
+    if var_h > 100.0:
+    	var_h = 100.0
+    elif var_h < 0.0:
+    	var_h = 0.0
     global hum
     hum = var_h
 
