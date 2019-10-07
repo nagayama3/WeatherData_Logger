@@ -81,7 +81,6 @@ def readData():
 
 def compensate_P(adc_P):
 	global  t_fine
-    global press
 	pressure = 0.0
 	
 	v1 = (t_fine / 2.0) - 64000.0
