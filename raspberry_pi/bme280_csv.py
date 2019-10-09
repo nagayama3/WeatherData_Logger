@@ -5,7 +5,7 @@ import time
 import csv
 import datetime
 import numpy as np
-import pandas as import pd
+import pandas as pd
 
 bus_number  = 1
 i2c_address = 0x76
@@ -75,14 +75,13 @@ def readData():
     compensate_T(temp_raw)
     compensate_P(pres_raw)
     compensate_H(hum_raw)
-    print date.strftime("%Y/%m/%d,%H:%M"), ",%-6.2f,%7.2f,%6.2f" % (temp, press, hum)
+    # print date.strftime("%Y/%m/%d,%H:%M"), ",%-6.2f,%7.2f,%6.2f" % (temp, press, hum)
     # print("temperature : %-6.2f ℃" % (temp))
     # print("pressure : %7.2f hPa" % (press))
     # print("humidity : %6.2f" % (hum)) + "%"
-
-	hour = date.strftime("%H")
-	minute = date.strftime("%M")
-	return [hour, minute, temp, press, hum]
+    hour = date.strftime("%H")
+    # minute = date.strftime("%M")
+    return [hour, temp, press, hum]
 
 
 def compensate_P(adc_P):
