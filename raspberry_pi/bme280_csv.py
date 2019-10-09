@@ -78,6 +78,10 @@ def readData():
     # print("pressure : %7.2f hPa" % (press))
     # print("humidity : %6.2f" % (hum)) + "%"
 
+	hour = date.strftime("%H")
+	minute = date.strftime("%M")
+	return [hour, minute, temp, press, hum]
+
 
 def compensate_P(adc_P):
     global  t_fine
