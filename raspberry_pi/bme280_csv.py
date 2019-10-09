@@ -4,6 +4,8 @@ from smbus2 import SMBus
 import time
 import csv
 import datetime
+import numpy as np
+import pandas as import pd
 
 bus_number  = 1
 i2c_address = 0x76
