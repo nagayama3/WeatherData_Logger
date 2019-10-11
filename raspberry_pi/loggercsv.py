@@ -8,7 +8,7 @@ import bme280_csv as bme
 
 date = datetime.datetime.today()
 csv_dir = os.path.dirname(os.path.abspath(__file__)) + '\csv'
-filename = date.strftime("%Y%m%d")
+filename = date.strftime("%Y-%m-%d")
 filepath = csv_dir + '/' + filename + '.csv'
 
 def create_csv():

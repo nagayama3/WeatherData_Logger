@@ -38,7 +38,8 @@ if __name__ == "__main__":
         press = 1000.0
         hum = 10
         for i in range(24):
-            weather_data = [[time, temp, press, hum]]
+            time_ = time.strftime("%Y-%m-%d %H:%M")
+            weather_data = [[time_, temp, press, hum]]
             writein_csv(weather_data)
             temp += i*1
             press += i

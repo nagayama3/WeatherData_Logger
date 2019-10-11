@@ -79,9 +79,9 @@ def readData():
     # print("temperature : %-6.2f ℃" % (temp))
     # print("pressure : %7.2f hPa" % (press))
     # print("humidity : %6.2f" % (hum)) + "%"
-    hour = date.strftime("%H")
+    time = datetime.datetime.strftime("%Y-%m-%d %H:%M")
     # minute = date.strftime("%M")
-    return [hour, temp, press, hum]
+    return [time, temp, press, hum]
 
 
 def compensate_P(adc_P):
