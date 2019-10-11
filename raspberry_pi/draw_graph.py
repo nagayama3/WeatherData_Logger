@@ -4,10 +4,13 @@ import os
 from datetime import datetime, timedelta
 
 #laptop
-save_dir = r"C:\Users\shun\Documents\programming\WeatherData_Logger\raspberry_pi\graphs"
-read_dir = r"C:\Users\shun\Documents\programming\WeatherData_Logger\raspberry_pi\csv\\"
+#save_dir = r"C:\Users\shun\Documents\programming\WeatherData_Logger\raspberry_pi\graphs"
+#read_dir = r"C:\Users\shun\Documents\programming\WeatherData_Logger\raspberry_pi\csv\\"
+
 #raspi
-#save_dir =
+save_dir = r"/home/pi/Documents/WeatherData_Logger/raspberry_pi/graphs"
+read_dir = r"/home/pi/Documents/WeatherData_Logger/raspberry_pi/csv/"
+
 date = datetime.today()
 filename = datetime.strftime(datetime.now() - timedelta(1), "%Y-%m-%d")
 read_file = read_dir + filename + '.csv'
