@@ -12,7 +12,7 @@ save_dir = r"/home/pi/Documents/WeatherData_Logger/raspberry_pi/graphs"
 read_dir = r"/home/pi/Documents/WeatherData_Logger/raspberry_pi/csv/"
 
 date = datetime.today()
-filename = datetime.strftime(datetime.now() - timedelta(0), "%Y-%m-%d")
+filename = datetime.strftime(datetime.now() - timedelta(1), "%Y-%m-%d")
 read_file = read_dir + filename + '.csv'
 
 data = pd.read_csv(read_file, index_col='time')
