@@ -33,5 +33,5 @@ ax_2.set_ylabel('pressure')
 
 labels = ax_1.get_xticklabels()
 plt.setp(labels, rotation=70)
-plt.show()
+#plt.show()
 plt.savefig(os.path.join(save_dir, pic_name))
