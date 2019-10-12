@@ -26,7 +26,7 @@ def writeReg(reg_address, data):
 
 def get_calib_param():
 	calib = []
-	
+
 	for i in range (0x88,0x88+24):
 		calib.append(bus.read_byte_data(i2c_address,i))
 	calib.append(bus.read_byte_data(i2c_address,0xA1))
@@ -51,7 +51,7 @@ def get_calib_param():
 	digH.append((calib[28]<< 4) | (0x0F & calib[29]))
 	digH.append((calib[30]<< 4) | ((calib[29] >> 4) & 0x0F))
 	digH.append( calib[31] )
-	
+
 	for i in range(1,2):
 		if digT[i] & 0x8000:
 			digT[i] = (-digT[i] ^ 0xFFFF) + 1
@@ -62,7 +62,7 @@ def get_calib_param():
 
 	for i in range(0,6):
 		if digH[i] & 0x8000:
-			digH[i] = (-digH[i] ^ 0xFFFF) + 1  
+			digH[i] = (-digH[i] ^ 0xFFFF) + 1
 
 def readData():
     data = []
@@ -71,15 +71,16 @@ def readData():
     pres_raw = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
     temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)
     hum_raw  = (data[6] << 8)  |  data[7]
-	
+
     compensate_T(temp_raw)
     compensate_P(pres_raw)
     compensate_H(hum_raw)
     # print date.strftime("%Y/%m/%d,%H:%M"), ",%-6.2f,%7.2f,%6.2f" % (temp, press, hum)
-    # print("temperature : %-6.2f ℃" % (temp))
-    # print("pressure : %7.2f hPa" % (press))
-    # print("humidity : %6.2f" % (hum)) + "%"
-    time = datetime.datetime.strftime("%Y-%m-%d %H:%M")
+    print("temperature : %-6.2f ℃" % (temp))
+    print("pressure : %7.2f hPa" % (press))
+    print("humidity : %6.2f" % (hum)) + "%"
+    time = date.strftime("%Y-%m-%d %H:%M")
+    print(time)
     # minute = date.strftime("%M")
     return [time, temp, press, hum]
 
@@ -93,7 +94,7 @@ def compensate_P(adc_P):
     v2 = (v2 / 4.0) + (digP[3] * 65536.0)
     v1 = (((digP[2] * (((v1 / 4.0) * (v1 / 4.0)) / 8192)) / 8)  + ((digP[1] * v1) / 2.0)) / 262144
     v1 = ((32768 + v1) * digP[0]) / 32768
-	
+
     if v1 == 0:
     	return 0
     pressure = ((1048576 - adc_P) - (v2 / 4096)) * 3125
