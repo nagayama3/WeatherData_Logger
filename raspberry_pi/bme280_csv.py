@@ -75,19 +75,15 @@ def readData():
     compensate_T(temp_raw)
     compensate_P(pres_raw)
     compensate_H(hum_raw)
-    # print date.strftime("%Y/%m/%d,%H:%M"), ",%-6.2f,%7.2f,%6.2f" % (temp, press, hum)
-<<<<<<< HEAD
     # print("temperature : %-6.2f ℃" % (temp))
     # print("pressure : %7.2f hPa" % (press))
     # print("humidity : %6.2f" % (hum)) + "%"
     time = datetime.datetime.strftime("%Y-%m-%d %H:%M")
-=======
-    print("temperature : %-6.2f ℃" % (temp))
-    print("pressure : %7.2f hPa" % (press))
-    print("humidity : %6.2f" % (hum)) + "%"
+    #print("temperature : %-6.2f ℃" % (temp))
+    #print("pressure : %7.2f hPa" % (press))
+    #print("humidity : %6.2f" % (hum)) + "%"
     time = date.strftime("%Y-%m-%d %H:%M")
-    print(time)
->>>>>>> f16fccdc6ac9feacff4bc75498cd10c161925aac
+    #print(time)
     # minute = date.strftime("%M")
     return [time, temp, press, hum]
 
