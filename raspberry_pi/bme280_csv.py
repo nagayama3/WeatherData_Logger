@@ -80,7 +80,7 @@ def readData():
     # print("temperature : %-6.2f ℃" % (temp))
     # print("pressure : %7.2f hPa" % (press))
     # print("humidity : %6.2f" % (hum)) + "%"
-    time = datetime.datetime.strftime("%Y-%m-%d %H:%M")
+    time = datetime.datetime.strftime("%Y/%m/%d %H:%M")
 =======
     print("temperature : %-6.2f ℃" % (temp))
     print("pressure : %7.2f hPa" % (press))
