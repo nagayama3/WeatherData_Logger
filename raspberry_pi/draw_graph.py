@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import os
 from datetime import datetime, timedelta
 
@@ -16,7 +17,7 @@ filename = datetime.strftime(datetime.now() - timedelta(1), "%Y-%m-%d")
 read_file = read_dir + filename + '.csv'
 
 data = pd.read_csv(read_file, index_col='time')
-title = date.strftime('%Y%m%d') + '@myhome'
+title = date.strftime('%Y%m%d') + '@myhouse'
 pic_name = datetime.strftime(datetime.now() - timedelta(1), '%Y-%m-%d') + '.png'
 
 #GRAPH
