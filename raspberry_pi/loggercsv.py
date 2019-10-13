@@ -33,6 +33,6 @@ if __name__ == "__main__":
         weather_data = bme.readData()
         #weather_data = [[13, 28.0, 1000.0, 56]]
         print(weather_data)
-	writein_csv([weather_data])
+        writein_csv([weather_data])
     except:
         pass
