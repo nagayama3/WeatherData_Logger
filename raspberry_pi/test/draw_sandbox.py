@@ -10,31 +10,46 @@ save_dir = r"C:\Users\shun\Documents\programming\WeatherData_Logger\raspberry_pi
 read_dir = r"C:\Users\shun\Documents\programming\WeatherData_Logger\raspberry_pi\csv\\"
 #raspi
 #save_dir =
-read_file = read_dir + 'sample2.csv'
+read_file = read_dir + '2019-10-12.csv'
 
 data = pd.read_csv(read_file, index_col='time')
-#df = data.iloc[:, [0, 2]]
-#df.plot()
-#plt.savefig(os.path.join(save_dir, "tmp_humid.png"))
-#plt.show()
+title = date.strftime('%Y%m%d') + '@myhouse'
 
 #GRAPH
-
-title = date.strftime('%Y%m%d') + '@myhome'
-
+fig, ax = plt.subplots()
 #temperature
-fig, ax_1 = plt.subplots()
-ax_2 = ax_1.twinx()
-df = data.iloc[:, [0, 2]]
-#ax_1.callbacks.connect()
-ax_1.plot(df)
-ax_1.set_title(title)
-ax_1.set_ylabel('temperature, humdity')
+df = data.iloc[:, [0]]
+l1, = ax.plot(df, color='r', label='temp')
 
+#xaxis
+#ax.xaxis.set_major_locator(mdates.HourLocator(byhour=(range(0, 24, 3))))
+#ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
+
+ax.set_title(title)
+ax.set_ylabel('temperature(℃)')
+#ax.legend(loc="lower left")
+plt.ylim(0, 40)
+
+#pressure
 df = data.iloc[:, [1]]
-ax_2.plot(df, color='green')
-ax_2.set_ylabel('pressure')
+ax_2 = ax.twinx()
+l2, = ax_2.plot(df, color='g', label='press')
+ax_2.set_ylabel('pressure(hPa)')
+#ax_2.legend(loc="lower left")
 
-labels = ax_1.get_xticklabels()
+#humdity
+df = data.iloc[:, [2]]
+ax_3 = ax.twinx()
+l3, = ax_3.plot(df, color='b', label='hum')
+ax_3.set_ylabel('humdity(%)')
+rspine = ax_2.spines['right']
+rspine.set_position(('axes', 1.25))
+plt.ylim(0, 100)
+#ax_3.legend(loc="lower left")
+
+fig.subplots_adjust(right=0.75)
+
+labels = ax.get_xticklabels()
 plt.setp(labels, rotation=70)
+plt.legend([l1, l2, l3], ["temp", "press", "hum"])
 plt.show()
