@@ -78,9 +78,9 @@ def readData():
     # print("temperature : %-6.2f ℃" % (temp))
     # print("pressure : %7.2f hPa" % (press))
     # print("humidity : %6.2f" % (hum)) + "%"
-    print("temperature : %-6.2f ℃" % (temp))
-    print("pressure : %7.2f hPa" % (press))
-    print("humidity : %6.2f" % (hum)) + "%"
+    #print("temperature : %-6.2f ℃" % (temp))
+    #print("pressure : %7.2f hPa" % (press))
+    #print("humidity : %6.2f" % (hum)) + "%"
     time = date.strftime("%Y-%m-%d %H:%M")
     print(time)
     # minute = date.strftime("%M")

@@ -22,6 +22,7 @@ def make_header():
 
 def writein_csv(weather_data):
     df = pd.DataFrame(weather_data)
+    print(filepath)
     df.to_csv(filepath, mode = 'a', header=False, index=False)
     df = pd.read_csv(filepath, index_col=0)
 
