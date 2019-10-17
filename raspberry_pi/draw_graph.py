@@ -17,8 +17,8 @@ filename = datetime.strftime(datetime.now() - timedelta(1), "%Y-%m-%d")
 read_file = read_dir + filename + '.csv'
 
 data = pd.read_csv(read_file, index_col='time')
-title = date.strftime('%Y%m%d') + '@myhouse'
-pic_name = datetime.strftime(datetime.now() - timedelta(1), '%Y-%m-%d') + '.png'
+title = filename + '@myhouse'
+pic_name = filename + '.png'
 
 #GRAPH
 fig, ax = plt.subplots()
