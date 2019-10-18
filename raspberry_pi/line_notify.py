@@ -4,19 +4,18 @@ import argparse
 import datetime
 import sys
 
-filename = .datetime.datetime.strftime(datetime.now() - timedelta(1), "%Y-%m-%d")
-read_file = read_dir + filename + '.csv'
+save_dir = r"/home/pi/Documents/WeatherData_Logger/raspberry_pi/graphs/"
+filename = datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(1), "%Y-%m-%d")
 
 def main():
     url = "https://notify-api.line.me/api/notify"
-    token = "HuJBwmzKyIVh2MX8WJtHu9mmb4Ap3j53WEzXcpiDL68"
+    token = "jElh7raXhrBrHKAUomKPX9C07UzH54yoYEqeaK1C2yE"
     headers = {"Authorization" : "Bearer" + token}
 
     message = filename + "の我が家の気象データ"
     payload = {"message" : message}
-    files = {"imageFile" : open(save_dir + read_file, "rb")}
+    files = {"imageFile" : open(save_dir + filename + ".png", "rb")}
 
-    line_notify = requests.post(url, data=payload, headers=headers, files=file)
+    line_notify = requests.post(url, data=payload, headers=headers, files=files)
 
 if __name__ == "__main__":
-    main()
