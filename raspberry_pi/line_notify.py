@@ -4,11 +4,8 @@ import argparse
 import datetime
 import sys
 
-date = datetime.today()
 filename = datetime.strftime(datetime.now() - timedelta(1), "%Y-%m-%d")
 read_file = read_dir + filename + '.csv'
-save_dir = r"/home/pi/Documents/WeatherData_Logger/raspberry_pi/graphs"
-
 
 def main():
     url = "https://notify-api.line.me/api/notify"
