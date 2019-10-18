@@ -4,7 +4,7 @@ import argparse
 import datetime
 import sys
 
-filename = datetime.strftime(datetime.now() - timedelta(1), "%Y-%m-%d")
+filename = .datetime.datetime.strftime(datetime.now() - timedelta(1), "%Y-%m-%d")
 read_file = read_dir + filename + '.csv'
 
 def main():
