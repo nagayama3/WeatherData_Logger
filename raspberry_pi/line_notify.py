@@ -2,6 +2,7 @@
 import requests
 import argparse
 import datetime
+import sys
 
 save_dir = r"/home/pi/Documents/WeatherData_Logger/raspberry_pi/graphs/"
 filename = datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(1), "%Y-%m-%d")
@@ -9,17 +10,16 @@ pic_path = save_dir + filename + ".png"
 
 def main(*args):
     url = "https://notify-api.line.me/api/notify"
-    token = "jElh7raXhrBrHKAUomKPX9C07UzH54yoYEqeaK1C2yE"
+    token = "aqQGPAfipAeWts6MY0vvh4cnZpSSjsmW7s3vaWC5IAB"
     headers = {"Authorization" : "Bearer" + token}
 
-    message = filename + "の我が家の気象データ"
+    message = filename
     payload = {"message" : message}
-    
-    if len(args) == 0:
-        pass
-    else:
-        files = {"imageFile" : open(save_dir + filename + ".png", "rb")}
-        requests.post(url, data=payload, headers=headers, files=files)
+    #print(message)
+    #print(pic_path)
+    files = {"imageFile" : open(pic_path, "rb")}
+    r = requests.post(url, headers=headers, data=payload, files=files)
+    print(r)
 
 if __name__ == "__main__":
-    main(pic_path)
+    main()
