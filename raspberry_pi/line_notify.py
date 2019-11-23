@@ -8,18 +8,14 @@ save_dir = r"/home/pi/Documents/WeatherData_Logger/raspberry_pi/graphs/"
 filename = datetime.datetime.strftime(datetime.datetime.now() - datetime.timedelta(1), "%Y-%m-%d")
 pic_path = save_dir + filename + ".png"
 
-def main(*args):
-    url = "https://notify-api.line.me/api/notify"
-    token = "aqQGPAfipAeWts6MY0vvh4cnZpSSjsmW7s3vaWC5IAB"
-    headers = {"Authorization" : "Bearer" + token}
+url = "https://notify-api.line.me/api/notify"
+token = "aqQGPAfipAeWts6MY0vvh4cnZpSSjsmW7s3vaWC5IAB"
+headers = {"Authorization" : "Bearer" + token}
 
-    message = filename
-    payload = {"message" : message}
-    #print(message)
-    #print(pic_path)
-    files = {"imageFile" : open(pic_path, "rb")}
-    r = requests.post(url, headers=headers, data=payload, files=files)
-    print(r)
-
-if __name__ == "__main__":
-    main()
+message = filename
+payload = {"message" : message}
+#print(message)
+#print(pic_path)
+#files = {"imageFile" : open(pic_path, "rb")}
+r = requests.post(url, headers=headers, data=payload)
+print(r)
